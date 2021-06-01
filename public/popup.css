@@ -1,0 +1,95 @@
+body{
+    min-width: 378px;
+    min-height: 510px;
+    margin: 0;
+
+}
+#header{
+    background-color: #0A1439 ;
+    font-family: 'Solway', serif;
+    padding-bottom: 5px;
+}
+#logo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+#title{
+    color: white;
+    display: block;
+    margin-left: 114px;
+    margin-right: auto;
+    width: 50%;
+    margin-top: -14px;
+    font-family: 'Roboto Slab', serif;
+}
+#add{
+    margin: 0 auto;
+    display:block;
+    margin-top: 143px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-family: 'Noto Sans', sans-serif;
+    padding-top: 6px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 9px;
+}
+#seeAll {
+    margin: 0 auto;
+    display:block;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: 'Noto Sans', sans-serif;
+    padding-top: 6px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 9px;
+}
+
+
+#urlInput {
+    font-family: 'Roboto Slab', serif;
+    margin: 0 auto;
+    display: block;
+    height: 31px;
+    width: 261px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+#titleInput{
+    font-family: 'Roboto Slab', serif;
+        margin: 0 auto;
+        display: block;
+    height: 31px;
+    width: 241px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+#tagInput{
+    font-family: 'Roboto Slab', serif;
+    margin: 0 auto;
+    display: block;
+    height: 31px;
+    width: 241px;
+    border-radius: 3px;
+    text-align: center;
+}
+#submit {
+    margin: 0 auto;
+    display: block;
+    font-family: 'Roboto Slab', serif;
+    border-radius: 20px;
+    font-size: 13px;
+    padding-top: 6px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 9px;
+}
+
+/* input{
+    color: lightgray;
+} */

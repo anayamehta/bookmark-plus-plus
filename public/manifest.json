@@ -4,14 +4,26 @@
   "version": "1.0", 
   "manifest_version": 2, 
   "description": "A better bookmark system", 
+  
   "browser_action":{ 
-    "default_popup": "index.html", 
-    "default_title": "add a link" }, 
+    "default_popup": "popup.html", 
+    "default_title": "add a link" 
+  }, 
+  
   "permissions": ["tabs", "storage"], 
+  
+  "content_scripts": [ 
+    {
+        "matches": ["<all_urls>"], 
+        "js": ["content.js"] 
+    }
+  ],
+
   "icons": { 
     "16": "logo192.png", 
     "48": "logo192.png", 
     "128": "logo192.png" 
   },
+  
   "content_security_policy": "script-src 'self' 'sha256-qC1OL3wKIlWBmFPspHoejX5IXWO5NRjpCMY1CspLxY8='; object-src 'self'"
 }
