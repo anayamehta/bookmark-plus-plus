@@ -8,7 +8,7 @@ function App() {
       <h1>Tabs Demo</h1>
      <Tabs> 
        <div label="Bookmarks"> 
-         See ya later, <em>Alligator</em>! 
+         See ya later, <em>other bookmark system</em>! 
        </div> 
        <div label="Tags"> 
          After 'while, <em>Crocodile</em>! 
