@@ -8,14 +8,14 @@ class Tab extends Component {
     onClick: PropTypes.func.isRequired,
   };
 
-  onClick = () => {
-    const { label, onClick } = this.props;
-    onClick(label);
+  onClick2 = () => {
+    const { label, onClickTabItem } = this.props;
+    onClickTabItem(label);
   }
 
   render() {
     const {
-      onClick,
+      onClick2,
       props: {
         activeTab,
         label,
@@ -31,7 +31,7 @@ class Tab extends Component {
     return (
       <li
         className={className}
-        onClick={onClick}
+        onClick={onClick2}
       >
         {label}
       </li>
