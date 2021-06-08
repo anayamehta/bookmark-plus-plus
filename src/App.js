@@ -5,7 +5,7 @@ import './App.css';
 function App() {
   return (
     <div>
-      <h1>Tabs Demo</h1>
+      <h1>bookmark++</h1>
      <Tabs> 
        <div label="Bookmarks"> 
          See ya later, <em>other bookmark system</em>! 

@@ -8,6 +8,7 @@ class Tab extends Component {
     onClick: PropTypes.func.isRequired,
   };
 
+  // calls Tabs.js onClickTabItem
   onClick2 = () => {
     const { label, onClickTabItem } = this.props;
     onClickTabItem(label);
@@ -28,6 +29,7 @@ class Tab extends Component {
       className += ' tab-list-active';
     }
 
+    {/* Displays actual tab */}
     return (
       <li
         className={className}
