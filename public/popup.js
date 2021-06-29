@@ -2,9 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('add').addEventListener('click', onclick, false)
     function onclick(){
         chrome.tabs.query({currentWindow: true, active: true}, 
-        function (tabs){
-            chrome.tabs.sendMessage(tabs[0].id, tabs[0], getInfo)
-        })
+            function (tabs){
+                // chrome.tabs.sendMessage(tabs[0].id, tabs[0], getInfo)
+                // console.log("tabs[0] " + JSON.stringify(tabs[0]))
+                getInfo(tabs[0]);
+            })
     }
 
     //all bookmarks, should open up a seperate page
@@ -22,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const inputUrl = document.createElement("input")
         inputUrl.setAttribute("type", "url");
         inputUrl.setAttribute("id", "urlInput");
-        console.log(res)
-        inputUrl.value = `${res.link}`
+        console.log("this is res " + JSON.stringify(res))
+        inputUrl.value = `${res.url}`
         document.body.appendChild(inputUrl);
         const br1 = document.createElement("br")
         document.body.appendChild(br1)
@@ -85,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
             //clear everything but see all bookmarks page
+            // add remove for the link?
             document.getElementById("submit").remove()
             document.getElementById("titleInput").remove()
             document.getElementById("tagInput").remove()
