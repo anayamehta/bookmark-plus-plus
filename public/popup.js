@@ -1,3 +1,5 @@
+// import { findByPlaceholderText } from "@testing-library/react"
+
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('add').addEventListener('click', onclick, false)
     function onclick(){
@@ -5,7 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
             function (tabs){
                 // chrome.tabs.sendMessage(tabs[0].id, tabs[0], getInfo)
                 // console.log("tabs[0] " + JSON.stringify(tabs[0]))
-                getInfo(tabs[0]);
+                var bookmarksArr = []
+                chrome.storage.sync.get(function(items){
+                    items.data.map((bookmark) => {
+                        bookmarksArr.push(bookmark);
+                        //console.log("bookmark in sync" + JSON.stringify(bookmark))
+                    });
+                })
+                getInfo(tabs[0], bookmarksArr);
             })
     }
 
@@ -16,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     //function that get's the link and title, also makes the form
-    function getInfo(res){
+    function getInfo(res, bookmarksArr){
         //remove the add link button
         document.getElementById("add").remove()
         
@@ -35,6 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
         inputTitle.setAttribute("type", "text");
         inputTitle.setAttribute("id", "titleInput");
         inputTitle.value = `${res.title}`
+        
+
         //inputTitle.setAttribute("placeholder", `${res.title}`);
         document.body.appendChild(inputTitle);
         const br2 = document.createElement("br")
@@ -49,6 +60,56 @@ document.addEventListener('DOMContentLoaded', function() {
         const br3 = document.createElement("br")
         document.body.appendChild(br3)
 
+        //folder
+        var myData = [
+            {
+              id: 0,
+              title: 'Item 1 '
+            }, {
+              id: 1,
+              title: 'Item 2',
+              subs: [
+                {
+                  id: 10,
+                  title: 'Item 2-1'
+                }, {
+                  id: 11,
+                  title: 'Item 2-2'
+                }, {
+                  id: 12,
+                  title: 'Item 2-3'
+                }
+              ]
+            }, {
+              id: 2,
+              title: 'Item 3'
+            },
+            // more data here
+        ];
+
+        
+
+        const folderSelect = document.createElement("input")
+        folderSelect.setAttribute("id", "folderSelect")
+        folderSelect.setAttribute("type", "text")
+        folderSelect.setAttribute("placeholder", "Move to...")
+        
+        // const folderSelectDiv = document.createElement("div")
+        // folderSelectDiv.appendChild(folderSelect)
+        // document.body.appendChild(folderSelectDiv)
+        document.body.appendChild(folderSelect)
+
+        $("#folderSelect").comboTree({
+            source:bookmarksArr,
+            isMultiple:false,
+            collapse:true
+
+        });
+    
+      
+        console.log(bookmarksArr)
+
+       
         //submit button
         const submitButton = document.createElement("button")
         submitButton.setAttribute("id", "submit")
@@ -57,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('submit').addEventListener('click', onclick2, false)
         const br4 = document.createElement("br")
         document.body.appendChild(br4)
+        $("#submit").css("background-color","red");
 
     }
     
