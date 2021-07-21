@@ -54,7 +54,22 @@ document.addEventListener(
       inputFolder.setAttribute("id", "folderName");
       document.body.appendChild(inputFolder);
 
-      // folder button
+      // select folder button
+      const selectFolderButton = document.createElement("button");
+      selectFolderButton.setAttribute("id", "selectFolderButton");
+      //addFolderButton.setAttribute("onclick", "addFolderOnClick");
+      selectFolderButton.innerHTML = "Select Folder";
+      document.body.appendChild(selectFolderButton);
+      document
+        .getElementById("selectFolderButton")
+        .addEventListener("click", selectFoldersOnClick, false);
+
+
+      
+    
+
+     
+      // add folder button
       const addFolderButton = document.createElement("button");
       addFolderButton.setAttribute("id", "addFolderButton");
       //addFolderButton.setAttribute("onclick", "addFolderOnClick");
@@ -142,24 +157,37 @@ document.addEventListener(
       // $("#submit").css("background-color","red");
     }
 
+    function selectFolderOnClick() {
+
+    }
+
     function addFolderOnClick() {
       var currentTime = new Date();
       var uniqueId = Date.now();
       console.log(document.getElementById("folderSelect").value);
       var bookmarkFolder = {
-        title: document.getElementById("folderName").value,
-        key: uniqueId,
-        timeCreated: currentTime,
+        name: document.getElementById("folderName").value,
+        // key: uniqueId,
+        dateAdded: currentTime,
         type: "folder",
+        children: []
       };
       //chrome.storage.sync.clear()
       chrome.storage.sync.get(function (items) {
         if (Object.keys(items).length > 0 && items.data) {
           // The data array already exists, add to it the new server and nickname
+          
           items.data.push(bookmarkFolder);
         } else {
           // The data array doesn't exist yet, create it
-          items.data = [bookmarkFolder];
+          var bookmarkTree = {
+            root: { 
+              // dateAdded: currentTime,
+              type: "root",
+              children: [bookmarkFolder] 
+            }
+          }
+          items.data = [bookmarkTree];
         }
         // Now save the updated items using set
         chrome.storage.sync.set(items, function () {
